@@ -1,28 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import "./Cart.css";
+import { CartContext } from "../contexts/CartContext";
 
 const Cart = () => {
-  const [cartList, setCartList] = useState(() => {
-    const storedCart = sessionStorage.getItem("cartList");
-    return storedCart ? JSON.parse(storedCart) : [];
-  });
-
-  const updateCartInSession = (updatedCart) => {
-    setCartList(updatedCart);
-    sessionStorage.setItem("cartList", JSON.stringify(updatedCart));
-  };
-
-  const handleQuantityChange = (productId, quantity) => {
-    const updatedCart = cartList.map((item) =>
-      item.id === productId ? { ...item, quantity: parseInt(quantity) } : item
-    );
-    updateCartInSession(updatedCart);
-  };
-
-  const removeFromCart = (productId) => {
-    const updatedCart = cartList.filter((item) => item.id !== productId);
-    updateCartInSession(updatedCart);
-  };
+  const { cartList, removeFromCart, updateQuantity } = useContext(CartContext);
 
   const calculateTotalAmount = () => {
     return cartList
@@ -40,26 +21,22 @@ const Cart = () => {
       alert("Please add at least one product to the cart to purchase.");
       return;
     }
-  
+
     const storedOrderList = sessionStorage.getItem("orderList");
     const orderList = storedOrderList ? JSON.parse(storedOrderList) : [];
-  
+
     const processedCartList = cartList.map((item) => ({
       ...item,
-      quantity: item.quantity || 1, 
-      updatedAmount: ((item.quantity || 1) * item.price).toFixed(2), 
+      quantity: item.quantity || 1,
+      updatedAmount: ((item.quantity || 1) * item.price).toFixed(2),
     }));
-  
+
     const updatedOrderList = [...orderList, ...processedCartList];
     sessionStorage.setItem("orderList", JSON.stringify(updatedOrderList));
-  
-    setCartList([]);
-    sessionStorage.removeItem("cartList");
-  
+
     alert("Demo purchase successful!");
   };
-  
-  
+
   return (
     <div className="cart-page">
       <div
@@ -68,7 +45,7 @@ const Cart = () => {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
-          width: '50%'
+          width: "50%",
         }}
       >
         <h2>Your Cart</h2>
@@ -91,7 +68,7 @@ const Cart = () => {
                     min="1"
                     value={product.quantity || 1}
                     onChange={(e) =>
-                      handleQuantityChange(product.id, e.target.value)
+                      updateQuantity(product.id, e.target.value)
                     }
                   />
                 </div>
@@ -113,7 +90,6 @@ const Cart = () => {
       {cartList.length > 0 && (
         <div className="cart-footer">
           <div className="cart-actions">
-            <button className="add-address-button">Add Delivery Address</button>
             <button className="buy-now-button" onClick={handleBuyNow}>
               Buy Now
             </button>

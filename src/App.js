@@ -6,10 +6,9 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Cart from "./components/Cart";
 import Orders from "./components/Orders";
-
+import CartProvider from "./contexts/CartContext";
 
 //"homepage": "https://PiyushJoshi999.github.io/Appscrip-task-Piyush",
-
 
 const App = () => {
   //const isAuthenticated = sessionStorage.getItem("authToken");
@@ -30,16 +29,18 @@ const App = () => {
     //     </Routes>
     //   </div>
     // </Router>
-    <Router basename="/Appscrip-task-Piyush">
-      <div>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/orders" element={<Orders />} />
-        </Routes>
-      </div>
-    </Router>
+    <CartProvider>
+      <Router basename="/Appscrip-task-Piyush">
+        <div>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/orders" element={<Orders />} />
+          </Routes>
+        </div>
+      </Router>
+    </CartProvider>
   );
 };
 
