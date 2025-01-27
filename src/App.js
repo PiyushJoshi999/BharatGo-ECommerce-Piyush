@@ -12,7 +12,7 @@ import PrivateRoute from "./components/PrivateRoute";
 const App = () => {
   return (
     <CartProvider>
-      <Router basename="/BharatGo-task-Piyush">
+      <Router basename="/BharatGo-ECommerce-Piyush">
         <div>
           <Navbar />
           <Routes>
