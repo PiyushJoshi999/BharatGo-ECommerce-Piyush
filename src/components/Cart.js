@@ -3,7 +3,7 @@ import "./Cart.css";
 import { CartContext } from "../contexts/CartContext";
 
 const Cart = () => {
-  const { cartList, removeFromCart, updateQuantity } = useContext(CartContext);
+  const { cartList, removeFromCart, updateQuantity, setCartList } = useContext(CartContext);
 
   const calculateTotalAmount = () => {
     return cartList
@@ -35,6 +35,9 @@ const Cart = () => {
     sessionStorage.setItem("orderList", JSON.stringify(updatedOrderList));
 
     alert("Demo purchase successful!");
+
+    sessionStorage.removeItem("cartList");
+    setCartList([]);
   };
 
   return (
@@ -57,7 +60,7 @@ const Cart = () => {
         <div className="cart-items">
           {cartList.map((product) => (
             <div key={product.id} className="cart-item">
-              <img src={product.image} alt={product.title} />
+              <img src={product.images[0]} alt={product.title} />
               <div className="cart-details">
                 <h3>{product.title}</h3>
                 <p>Price: ${product.price}</p>
@@ -67,9 +70,7 @@ const Cart = () => {
                     type="number"
                     min="1"
                     value={product.quantity || 1}
-                    onChange={(e) =>
-                      updateQuantity(product.id, e.target.value)
-                    }
+                    onChange={(e) => updateQuantity(product.id, e.target.value)}
                   />
                 </div>
                 <p>

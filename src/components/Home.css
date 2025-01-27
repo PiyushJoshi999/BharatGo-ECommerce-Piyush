@@ -60,6 +60,7 @@ body {
   background: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
+  cursor: pointer;
 }
 
 .product-card:hover {
@@ -99,6 +100,35 @@ body {
 
 .remove-from-cart:hover {
   background-color: #e53935;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 1rem;
+}
+
+.category:hover,
+.category.active {
+  background-color: #f39c12;
+  color: #fff;
+}
+
+.category-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.login-warning {
+  color: #ff0000;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
 }
 
 @keyframes gradientAnimation {

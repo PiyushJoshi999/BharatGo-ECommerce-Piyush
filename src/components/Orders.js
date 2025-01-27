@@ -1,8 +1,9 @@
-import React, { useState} from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Orders.css";
-
+import { CartContext } from "../contexts/CartContext";
 const Orders = () => {
+  const { addToCart } = useContext(CartContext);
   const [orderList, setOrderList] = useState(() => {
     const storedOrderList = sessionStorage.getItem("orderList");
     return storedOrderList ? JSON.parse(storedOrderList) : [];
@@ -11,12 +12,7 @@ const Orders = () => {
   const navigate = useNavigate();
 
   const handleReorder = (product) => {
-    const storedCartList = sessionStorage.getItem("cartList");
-    const cartList = storedCartList ? JSON.parse(storedCartList) : [];
-
-    const updatedCartList = [...cartList, { ...product }];
-    sessionStorage.setItem("cartList", JSON.stringify(updatedCartList));
-
+    addToCart({ ...product });
     navigate("/cart");
   };
 
@@ -29,7 +25,7 @@ const Orders = () => {
         <div className="order-items">
           {orderList.map((product, index) => (
             <div key={index} className="order-item">
-              <img src={product.image} alt={product.title} />
+              <img src={product.images[0]} alt={product.title} />
               <div className="order-details">
                 <h3>{product.title}</h3>
                 <p>Quantity: {product.quantity}</p>
