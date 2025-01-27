@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/BharatGo-ECommerce-Piyush/static/css/main.1223ff66.css",
-    "main.js": "/BharatGo-ECommerce-Piyush/static/js/main.1910feae.js",
+    "main.css": "/BharatGo-ECommerce-Piyush/static/css/main.ee224e0d.css",
+    "main.js": "/BharatGo-ECommerce-Piyush/static/js/main.41922638.js",
     "static/js/488.b566bca9.chunk.js": "/BharatGo-ECommerce-Piyush/static/js/488.b566bca9.chunk.js",
     "index.html": "/BharatGo-ECommerce-Piyush/index.html",
-    "main.1223ff66.css.map": "/BharatGo-ECommerce-Piyush/static/css/main.1223ff66.css.map",
-    "main.1910feae.js.map": "/BharatGo-ECommerce-Piyush/static/js/main.1910feae.js.map",
+    "main.ee224e0d.css.map": "/BharatGo-ECommerce-Piyush/static/css/main.ee224e0d.css.map",
+    "main.41922638.js.map": "/BharatGo-ECommerce-Piyush/static/js/main.41922638.js.map",
     "488.b566bca9.chunk.js.map": "/BharatGo-ECommerce-Piyush/static/js/488.b566bca9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1223ff66.css",
-    "static/js/main.1910feae.js"
+    "static/css/main.ee224e0d.css",
+    "static/js/main.41922638.js"
   ]
 }
