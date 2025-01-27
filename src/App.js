@@ -9,8 +9,6 @@ import CartProvider from "./contexts/CartContext";
 import SignUp from "./authentication/SignUp";
 import PrivateRoute from "./components/PrivateRoute";
 
-//"homepage": "https://PiyushJoshi999.github.io/Appscrip-task-Piyush",
-
 const App = () => {
   return (
     <CartProvider>
